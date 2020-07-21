@@ -7,10 +7,11 @@ const books=[{title:'War and Peace', genre:'Historic', author:'Mickiewicz', read
 
 
 bookRouter.route('/').get((req, res) => {
-  res.render('books', {nav:[{link:'/books',title:'Books'},{link:'/authors',title:'Author'}],title:'Library',books});})
+  res.render('bookListView', {nav:[{link:'/books',title:'Books'},{link:'/authors',title:'Author'}],title:'Library',books});})
 
   
-bookRouter.route('/single').get((req, res) => {
-  res.send('hello single book');})
+bookRouter.route('/:id').get((req, res) => {
+   const {id}= req.params;
+ res.render('bookView', {nav:[{link:'/books',title:'Books'},{link:'/authors',title:'Author'}],title:'Library',book:books[id]});})
 
   module.exports=bookRouter;
