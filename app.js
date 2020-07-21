@@ -15,8 +15,12 @@ app.use('/js', express.static(path.join(__dirname, 'node_module/jquery/dist')));
 app.set('views','./src/views');
 app.set('view engine','ejs');
 
+const books=[{title:'War and Peace', genre:'Historic', author:'Mickiewicz', read:false},
+{title:'The time machine', genre:'Science', author:'Well', read:true}];
+
+
 bookRouter.route('/').get((req, res) => {
-  res.send('hello books');})
+  res.render('books', {nav:[{link:'/books',title:'Books'},{link:'/authors',title:'Author'}],title:'Library',books});})
 
   
 bookRouter.route('/single').get((req, res) => {
