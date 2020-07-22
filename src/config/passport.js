@@ -6,7 +6,7 @@ module.exports=function passportConfig(app){
     app.use(passport.initialize());
     app.use(passport.session());
     passport.serializeUser((user,done)=>{
-done(null,user.id);})
+done(null,user);})
 passport.deserializeUser((userId,done)=>{
     done(null,user);
 
